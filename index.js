@@ -1,4 +1,12 @@
-// A Chiasm plugin for loading CSV files.
+//chiasm-csv-loader.js
+//v__VERSION__
+//
+//A Chiasm plugin that loads CSV files.
+
+var Model = require("model-js");
+var ChiasmComponent = require("chiasm-component");
+var d3 = require("d3");
+
 function ChiasmCSVLoader (){
 
   var my = ChiasmComponent({
@@ -7,6 +15,7 @@ function ChiasmCSVLoader (){
 
   my.when("path", function (path){
     if(path !== Model.None){
+
       d3.json(path + ".json", function(error, schema) {
 
         var numericColumns = schema.columns.filter(function (column){

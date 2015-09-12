@@ -1,0 +1,48 @@
+{
+  "name": "chiasm-csv-loader",
+  "version": "0.2.0",
+  "description": "A Chiasm plugin that loads CSV files.",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "browserify -o chiasm-csv-loader.js -s ChiasmCSVLoader index.js",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chiasm-project/chiasm-csv-loader.git"
+  },
+  "keywords": [
+    "data",
+    "csv",
+    "d3"
+  ],
+  "author": "Curran Kelleher",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chiasm-project/chiasm-csv-loader/issues"
+  },
+  "homepage": "https://github.com/chiasm-project/chiasm-csv-loader#readme",
+  "browserify": {
+    "transform": [
+      "browserify-shim",
+      "browserify-versionify"
+    ]
+  },
+  "browserify-shim": {
+    "d3": "global:d3",
+    "model-js": "global:Model",
+    "chiasm-component": "global:ChiasmComponent"
+  },
+  "dependencies": {
+    "d3": "^3.5.6",
+    "chiasm-component": "^0.2.1",
+    "model-js": "^0.2.4"
+  },
+  "devDependencies": {
+    "browserify": "^11.1.0",
+    "browserify-shim": "^3.8.10",
+    "browserify-versionify": "^1.0.6",
+    "chai": "^3.2.0",
+    "mocha": "^2.3.2"
+  }
+}
