@@ -1,14 +1,14 @@
-//chiasm-csv-loader.js
+//chiasm-dsv-dataset.js
 //v__VERSION__
 //
-//A Chiasm plugin that loads CSV files.
+//A Chiasm plugin that loads data files.
 
 var Model = require("model-js");
 var ChiasmComponent = require("chiasm-component");
 var d3 = require("d3");
 var dsvDataset = require("dsv-dataset");
 
-function ChiasmCSVLoader (){
+function ChiasmDsvDataset (){
 
   var my = ChiasmComponent({
     path: Model.None
@@ -32,9 +32,10 @@ function ChiasmCSVLoader (){
       dsvString: dsvString, 
       metadata: metadata
     });
+    my.data = my.dataset.data;
   });
 
   return my;
 }
 
-module.exports = ChiasmCSVLoader;
+module.exports = ChiasmDsvDataset;

@@ -1,7 +1,7 @@
 {
-  "name": "chiasm-csv-loader",
+  "name": "chiasm-dsv-dataset",
   "version": "0.2.0",
-  "description": "A Chiasm plugin that loads CSV files.",
+  "description": "A Chiasm plugin that loads data files.",
   "main": "index.js",
   "scripts": {
     "pretest": "browserify -o chiasm-dsv-dataset.js -s ChiasmDsvDataset index.js",
@@ -9,19 +9,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chiasm-project/chiasm-csv-loader.git"
+    "url": "git+https://github.com/chiasm-project/chiasm-dsv-dataset.git"
   },
   "keywords": [
     "data",
+    "dsv",
     "csv",
+    "tsv",
     "d3"
   ],
   "author": "Curran Kelleher",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chiasm-project/chiasm-csv-loader/issues"
+    "url": "https://github.com/chiasm-project/chiasm-dsv-dataset/issues"
   },
-  "homepage": "https://github.com/chiasm-project/chiasm-csv-loader#readme",
+  "homepage": "https://github.com/chiasm-project/chiasm-dsv-dataset#readme",
   "browserify": {
     "transform": [
       "browserify-shim",

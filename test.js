@@ -23,9 +23,11 @@ describe("chiasm-dsv-dataset", function () {
     chiasm.getComponent("dsv").then(function (dsv){
       dsv.when("dataset", function (dataset){
 
-        var row = dataset.data[0];
-
         assert.equal(dataset.data.length, 150);
+        assert.equal(dsv.data.length, 150);
+        assert.equal(dataset.metadata.columns.length, 5);
+
+        var row = dataset.data[0];
         assert.equal(typeof row.sepal_length, "number");
         assert.equal(typeof row.sepal_width,  "number");
         assert.equal(typeof row.petal_length, "number");
