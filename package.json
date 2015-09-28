@@ -4,7 +4,7 @@
   "description": "A Chiasm plugin that loads CSV files.",
   "main": "index.js",
   "scripts": {
-    "pretest": "browserify -o chiasm-csv-loader.js -s ChiasmCSVLoader index.js",
+    "pretest": "browserify -o chiasm-dsv-dataset.js -s ChiasmDsvDataset index.js",
     "test": "mocha"
   },
   "repository": {
@@ -34,8 +34,9 @@
     "chiasm-component": "global:ChiasmComponent"
   },
   "dependencies": {
-    "d3": "^3.5.6",
     "chiasm-component": "^0.2.1",
+    "d3": "^3.5.6",
+    "dsv-dataset": "^0.1.2",
     "model-js": "^0.2.4"
   },
   "devDependencies": {
@@ -43,6 +44,8 @@
     "browserify-shim": "^3.8.10",
     "browserify-versionify": "^1.0.6",
     "chai": "^3.2.0",
-    "mocha": "^2.3.2"
+    "chiasm": "^0.2.1",
+    "mocha": "^2.3.2",
+    "xhr2": "^0.1.3"
   }
 }

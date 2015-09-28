@@ -6,6 +6,7 @@
 var Model = require("model-js");
 var ChiasmComponent = require("chiasm-component");
 var d3 = require("d3");
+var dsvDataset = require("dsv-dataset");
 
 function ChiasmCSVLoader (){
 
@@ -15,25 +16,22 @@ function ChiasmCSVLoader (){
 
   my.when("path", function (path){
     if(path !== Model.None){
-
-      d3.json(path + ".json", function(error, schema) {
-
-        var numericColumns = schema.columns.filter(function (column){
-          return column.type === "number";
-        });
-
-        var type = function (d){
-          numericColumns.forEach(function (column){
-            d[column.name] = +d[column.name];
-          });
-          return d;
-        }
-
-        d3.csv(path + ".csv", type, function(error, data) {
-          my.data = data;
-        });
+      d3.json(path + ".json", function(error, metadata) {
+        if(error){ throw error; }
+        my.metadata = metadata;
+      });
+      d3.xhr(path + ".csv", function (error, xhr){
+        if(error){ throw error; }
+        my.dsvString = xhr.response;
       });
     }
+  });
+
+  my.when(["dsvString", "metadata"], function (dsvString, metadata){
+    my.dataset = dsvDataset.parse({
+      dsvString: dsvString, 
+      metadata: metadata
+    });
   });
 
   return my;
