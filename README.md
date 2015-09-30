@@ -28,7 +28,7 @@ sepal_length,sepal_width,petal_length,petal_width,class
 
 Here is the content of `http://bl.ocks.org/curran/raw/b6e1d23c16dc76371a92/iris.json`:
 
-```
+```json
 {
   "columns": [
     { "name": "sepal_length", "type": "number", "label": "Sepal Length" },
