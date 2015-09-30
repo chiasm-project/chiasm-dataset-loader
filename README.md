@@ -79,3 +79,5 @@ The following JSON will be printed:
 ```
 
 Notice how numeric columns have been parsed to numbers.
+
+To see how this component can be used to fetch data for visualizations, check out this [Magic Bar Chart example](http://bl.ocks.org/curran/b6e1d23c16dc76371a92).
