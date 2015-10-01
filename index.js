@@ -1,5 +1,4 @@
 //chiasm-dsv-dataset.js
-//v__VERSION__
 //
 //A Chiasm plugin that loads data files.
 
