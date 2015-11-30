@@ -32,7 +32,7 @@
   "dependencies": {
     "chiasm-component": "^0.2.2",
     "d3": "^3.5.6",
-    "dsv-dataset": "^0.1.2",
+    "dsv-dataset": "^0.2.0",
     "model-js": "^0.2.4"
   },
   "devDependencies": {
