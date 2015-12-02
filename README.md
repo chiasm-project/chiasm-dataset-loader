@@ -1,5 +1,5 @@
 # chiasm-dsv-dataset
-A Chiasm plugin that loads delimiter separated value (DSV) data tables. This is a thin wrapper around the [dsv-dataset module](https://github.com/curran/dsv-dataset), which is a metadata specification and parsing library for data sets. Take a look at the [unit test](https://github.com/chiasm-project/chiasm-dsv-dataset/blob/master/test.js) for example usage. When a "path" property is specified, the component appends ".csv" and ".json" to it and uses an XMLHttpRequest to fetch those two paths. The ".csv" fils should contain a data table, and the ".json" file should contain metadata about the table including column types.
+A Chiasm component that loads delimiter separated value (DSV) data tables. This is a thin wrapper around the [dsv-dataset module](https://github.com/curran/dsv-dataset), which is a metadata specification and parsing library for data sets. Take a look at the [unit test](https://github.com/chiasm-project/chiasm-dsv-dataset/blob/master/test.js) for example usage. When a "path" property is specified, the component appends ".csv" and ".json" to it and uses an XMLHttpRequest to fetch those two paths. The ".csv" fils should contain a data table, and the ".json" file should contain metadata about the table including column types.
 
 Example use:
 
@@ -28,7 +28,7 @@ sepal_length,sepal_width,petal_length,petal_width,class
 
 Here is the content of `http://bl.ocks.org/curran/raw/b6e1d23c16dc76371a92/iris.json`:
 
-```
+```json
 {
   "columns": [
     { "name": "sepal_length", "type": "number", "label": "Sepal Length" },
@@ -79,3 +79,5 @@ The following JSON will be printed:
 ```
 
 Notice how numeric columns have been parsed to numbers.
+
+To see how this component can be used to fetch data for visualizations, check out this [Magic Bar Chart example](http://bl.ocks.org/curran/b6e1d23c16dc76371a92).
