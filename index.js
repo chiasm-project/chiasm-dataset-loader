@@ -32,7 +32,6 @@ function ChiasmDsvDataset (){
       dsvString: dsvString, 
       metadata: metadata
     });
-    my.data = my.dataset.data;
   });
 
   return my;

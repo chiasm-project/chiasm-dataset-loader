@@ -24,7 +24,6 @@ describe("chiasm-dsv-dataset", function () {
       dsv.when("dataset", function (dataset){
 
         assert.equal(dataset.data.length, 150);
-        assert.equal(dsv.data.length, 150);
         assert.equal(dataset.metadata.columns.length, 5);
 
         var row = dataset.data[0];
