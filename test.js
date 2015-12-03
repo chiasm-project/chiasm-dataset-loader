@@ -3,7 +3,7 @@ var assert = require("assert"),
     ChiasmDsvDataset = require("./index");
 
 // Use this shim so d3.csv and d3.json work.
-XMLHttpRequest = require("xhr2");
+global.XMLHttpRequest = require("xhr2");
 
 describe("chiasm-dsv-dataset", function () {
 
