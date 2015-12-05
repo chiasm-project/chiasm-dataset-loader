@@ -1,23 +1,24 @@
-# chiasm-dsv-dataset
+# chiasm-dataset-loader
 A Chiasm component that loads delimiter separated value (DSV) data tables. This is a thin wrapper around the [dsv-dataset module](https://github.com/curran/dsv-dataset), which is a metadata specification and parsing library for data sets. Take a look at the [unit test](https://github.com/chiasm-project/chiasm-dsv-dataset/blob/master/test.js) for example usage. When a "path" property is specified, the component appends ".csv" and ".json" to it and uses an XMLHttpRequest to fetch those two paths. The ".csv" fils should contain a data table, and the ".json" file should contain metadata about the table including column types.
 
 Example use:
 
 The following script will set up the component in a Chiasm application:
 ```javascript
+var ChiasmDatasetLoader = require("chiasm-dataset-loader");
 var chiasm = Chiasm();
-chiasm.plugins.dsvDataset = ChiasmDsvDataset;
+chiasm.plugins.datasetLoader = ChiasmDatasetLoader;
 chiasm.setConfig({
   dsv: {
-    plugin: "dsvDataset",
+    plugin: "datasetLoader",
     state: {
-      path: "http://bl.ocks.org/curran/raw/b6e1d23c16dc76371a92/iris"
+      path: "http://bl.ocks.org/curran/raw/a08a1080b88344b0c8a7/iris"
     }
   }
 });
 ```
 
-Here are a few sample lines from `http://bl.ocks.org/curran/raw/b6e1d23c16dc76371a92/iris.csv`:
+Here are a few sample lines from `http://bl.ocks.org/curran/raw/a08a1080b88344b0c8a7/iris.csv`:
 
 ```
 sepal_length,sepal_width,petal_length,petal_width,class
@@ -26,7 +27,7 @@ sepal_length,sepal_width,petal_length,petal_width,class
 5.8,2.7,5.1,1.9,virginica
 ```
 
-Here is the content of `http://bl.ocks.org/curran/raw/b6e1d23c16dc76371a92/iris.json`:
+Here is the content of `http://bl.ocks.org/curran/raw/a08a1080b88344b0c8a7/iris.json`:
 
 ```json
 {
