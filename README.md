@@ -9,7 +9,7 @@ var ChiasmDatasetLoader = require("chiasm-dataset-loader");
 var chiasm = Chiasm();
 chiasm.plugins.datasetLoader = ChiasmDatasetLoader;
 chiasm.setConfig({
-  dsv: {
+  loader: {
     plugin: "datasetLoader",
     state: {
       path: "http://bl.ocks.org/curran/raw/a08a1080b88344b0c8a7/iris"
@@ -44,41 +44,52 @@ Here is the content of `http://bl.ocks.org/curran/raw/a08a1080b88344b0c8a7/iris.
 The following code will print out the parsed table:
 
 ```javascript
-chiasm.getComponent("dsv").then(function (dsv){
-  dsv.when("dataset", function (dataset){
-    console.log(dataset);
+chiasm.getComponent("loader").then(function (loader){
+  loader.when("dataset", function (dataset){
+    console.log(JSON.stringify(dataset, null, 2));
   });
 });
 ```
 
 The following JSON will be printed:
 ```json
-[
-  {
-    "sepal_length": 5.1,
-    "sepal_width": 3.5,
-    "petal_length": 1.4,
-    "petal_width": 0.2,
-    "class": "setosa"
-  },
-  {
-    "sepal_length": 6.2,
-    "sepal_width": 2.9,
-    "petal_length": 4.3,
-    "petal_width": 1.3,
-    "class": "versicolor"
-  },
-  {
-    "sepal_length": 6.3,
-    "sepal_width": 3.3,
-    "petal_length": 6,
-    "petal_width": 2.5,
-    "class": "virginica"
-  },
-  ... more rows of data ...
-]
+{
+  "data": [
+    {
+      "sepal_length": 5.1,
+      "sepal_width": 3.5,
+      "petal_length": 1.4,
+      "petal_width": 0.2,
+      "class": "setosa"
+    },
+    {
+      "sepal_length": 6.2,
+      "sepal_width": 2.9,
+      "petal_length": 4.3,
+      "petal_width": 1.3,
+      "class": "versicolor"
+    },
+    {
+      "sepal_length": 6.3,
+      "sepal_width": 3.3,
+      "petal_length": 6,
+      "petal_width": 2.5,
+      "class": "virginica"
+    },
+    ... more rows of data ...
+  ],
+  "metadata": {
+    "columns": [
+      { "name": "sepal_length", "type": "number", "label": "Sepal Length" },
+      { "name": "sepal_width", "type": "number", "label": "Sepal Width" },
+      { "name": "petal_length", "type": "number", "label": "Petal Length" },
+      { "name": "petal_width", "type": "number", "label": "Petal Width" },
+      { "name": "class", "type": "string", "label": "Species" }
+    ]
+  ]
+}
 ```
 
-Notice how numeric columns have been parsed to numbers.
+Notice how numeric columns have been parsed to numbers. This data structure is an instance of [chiasm-dataset](https://github.com/chiasm-project/chiasm-dataset).
 
 To see how this component can be used to fetch data for visualizations, check out this [Magic Bar Chart example](http://bl.ocks.org/curran/b6e1d23c16dc76371a92).
