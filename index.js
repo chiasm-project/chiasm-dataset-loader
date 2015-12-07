@@ -7,7 +7,7 @@ var ChiasmComponent = require("chiasm-component");
 var d3 = require("d3");
 var dsvDataset = require("dsv-dataset");
 
-function ChiasmDsvDataset (){
+function ChiasmDatasetLoader(){
 
   var my = ChiasmComponent({
     path: Model.None
@@ -15,10 +15,12 @@ function ChiasmDsvDataset (){
 
   my.when("path", function (path){
     if(path !== Model.None){
+
       d3.json(path + ".json", function(error, metadata) {
         if(error){ throw error; }
         my.metadata = metadata;
       });
+
       d3.xhr(path + ".csv", function (error, xhr){
         if(error){ throw error; }
         my.dsvString = xhr.response;
@@ -36,4 +38,4 @@ function ChiasmDsvDataset (){
   return my;
 }
 
-module.exports = ChiasmDsvDataset;
+module.exports = ChiasmDatasetLoader;

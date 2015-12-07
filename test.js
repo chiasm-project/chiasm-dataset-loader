@@ -1,6 +1,6 @@
 var assert = require("assert"),
     Chiasm = require("chiasm"),
-    ChiasmDsvDataset = require("./index");
+    ChiasmDatasetLoader = require("./index");
 
 // Use this shim so d3.csv and d3.json work.
 global.XMLHttpRequest = require("xhr2");
@@ -9,21 +9,21 @@ describe("chiasm-dsv-dataset", function () {
 
   it("Should parse sample CSV data.", function(done) {
     var chiasm = Chiasm();
-    chiasm.plugins.dsvDataset = ChiasmDsvDataset;
+    chiasm.plugins.datasetLoader = ChiasmDatasetLoader;
     
     // Load the Iris dataset.
     // See http://bl.ocks.org/curran/a08a1080b88344b0c8a7
     chiasm.setConfig({
-      dsv: {
-        plugin: "dsvDataset",
+      loader: {
+        plugin: "datasetLoader",
         state: {
           path: "http://bl.ocks.org/curran/raw/a08a1080b88344b0c8a7/iris"
         }
       }
     });
 
-    chiasm.getComponent("dsv").then(function (dsv){
-      dsv.when("dataset", function (dataset){
+    chiasm.getComponent("loader").then(function (loader){
+      loader.when("dataset", function (dataset){
 
         assert.equal(dataset.data.length, 150);
         assert.equal(dataset.metadata.columns.length, 5);
