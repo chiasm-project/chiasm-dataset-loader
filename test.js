@@ -11,11 +11,13 @@ describe("chiasm-dsv-dataset", function () {
     var chiasm = Chiasm();
     chiasm.plugins.dsvDataset = ChiasmDsvDataset;
     
+    // Load the Iris dataset.
+    // See http://bl.ocks.org/curran/a08a1080b88344b0c8a7
     chiasm.setConfig({
       dsv: {
         plugin: "dsvDataset",
         state: {
-          path: "http://bl.ocks.org/curran/raw/b6e1d23c16dc76371a92/iris"
+          path: "http://bl.ocks.org/curran/raw/a08a1080b88344b0c8a7/iris"
         }
       }
     });
@@ -31,7 +33,7 @@ describe("chiasm-dsv-dataset", function () {
         assert.equal(typeof row.sepal_width,  "number");
         assert.equal(typeof row.petal_length, "number");
         assert.equal(typeof row.petal_width,  "number");
-        assert.equal(typeof row.class,        "string");
+        assert.equal(typeof row.species,      "string");
         done();
       });
     });
